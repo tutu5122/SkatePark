@@ -1,0 +1,46 @@
+<h1>Skate Park</h1>
+<a href="/">Ir a inicio</a>
+
+<div class="py-4">
+  <h2>Administración</h2>
+  <hr/>
+
+  <table class="table m-auto table-dark">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Foto</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Años de experiencia</th>
+        <th scope="col">Especialidad</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each skaters}}
+      <tr>
+        <th scope="row">{{this.id}}</th>
+        <td><img
+              class="imagenSkater"
+              src="{{this.foto}}"
+              alt="{{this.nombre}}"
+            /></td>
+          <td>{{this.nombre}}</td>
+          <td>{{this.anos_experiencia}}</td>
+          <td>{{this.especialidad}}</td>
+          <td>
+          {{#if this.estado}}
+            <span class="text-success font-weight-bold">Aprobado</span>
+          {{else}}
+            <span class="text-warning font-weight-bold">En revisión</span>
+          {{/if}}
+        </td>
+        <td>
+          <input type="checkbox" data-id="{{this.id}}" {{#if this.estado}}checked{{/if}} onclick="actualizarEstado('{{this.id}}', this.checked)"/>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
